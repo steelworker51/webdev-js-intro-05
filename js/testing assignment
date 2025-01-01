@@ -1,0 +1,83 @@
+"use strict";
+
+const todos = [
+    "Wash the dishes",
+    "Clean the gutters",
+    "Mow the yard",
+    "Do some coding",
+    "Rake the leaves",
+];
+
+// Declare mutable variables
+let shiftValue;
+let popValue;
+
+// Elements to update
+const answerOneEl = document.getElementById("answer-one");
+const answerTwoEl = document.getElementById("answer-two");
+const answerFourEl = document.getElementById("answer-four");
+const answerFiveEl = document.getElementById("answer-five");
+const answerSixEl = document.getElementById("answer-six");
+const submissionBtn = document.getElementById("submission-btn");
+
+
+function updateAnswerOne() {
+    answerOneEl.innerText = todos.join(", ");
+}
+
+
+function updateAnswerTwo() {
+    answerTwoEl.innerText = todos[2];
+}
+function removeLastValue() {
+    popValue = todos.pop();
+   
+}
+
+
+// Update the fourth question: show the list of todos after popping last item
+function updateAnswerFour() {
+    answerFourEl.innerText = todos.join(", ");
+}
+
+// Function to reverse the todo array
+function reverseTodoList() {
+    todos.reverse();
+    updateAnswerFive(); // Update after reversal
+}
+
+// Update the fifth question: show the list of todos after reversing
+function updateAnswerFive() {
+    answerFiveEl.innerText = todos.join(", ");
+}
+
+function removeFirstValue() {
+    shiftValue = todos.shift();
+}
+
+function addShiftAndPopValues() {
+    // Add shiftValue and popValue back to the end of the array
+    todos.push(shiftValue);
+    todos.push(popValue);
+}
+
+// Update the sixth question: show the removed shift value
+function updateAnswerSix() {
+    answerSixEl.innerText = todos.join(", ");
+}
+
+
+// Render the initial state of the todos array
+function render() {
+    updateAnswerOne();
+    updateAnswerTwo();
+    updateAnswerFour();
+    updateAnswerFive();
+    updateAnswerSix();
+}
+
+// Event listener for submission button
+submissionBtn.addEventListener("click", function () {
+    render();
+});
+
